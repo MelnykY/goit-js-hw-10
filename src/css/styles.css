@@ -7,14 +7,56 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa;
+  /* background-color: #fafafac1; */
+  background-image: url("../bg-img.webp");
+  background-repeat: repeat;
+  /* background-size: cover; */
   color: #212121;
   line-height: 1.5;
+}
+
+/* .wrapper  */
+.country-info__container {
+  padding: 20px;
+  background-color: #fafafaea;
+  width: 60vh;
+  box-shadow: rgba(46, 162, 240, 0.4) 5px 5px,
+    rgba(46, 162, 240, 0.3) 10px 10px,
+    rgba(46, 162, 240, 0.2) 15px 15px,
+    rgba(46, 162, 240, 0.1) 20px 20px,
+    rgba(46, 162, 240, 0.05) 25px 25px;
+}
+
+.country-list__item {
+  display: block;
+  list-style: none;
+  padding: 20px;
+  background-color: #fafafac1;
+  width: max-content;
+  box-shadow: rgba(46, 162, 240, 0.4) 5px 5px,
+    rgba(46, 162, 240, 0.3) 10px 10px,
+    rgba(46, 162, 240, 0.2) 15px 15px,
+    rgba(46, 162, 240, 0.1) 20px 20px,
+    rgba(46, 162, 240, 0.05) 25px 25px;
 }
 
 #search-box {
   font: inherit;
   padding: 8px;
   max-width: 320px;
-  margin-bottom: 16px;
+  margin-bottom: 26px;
+  box-shadow: rgba(46, 162, 240, 0.4) 5px 5px,
+    rgba(46, 162, 240, 0.3) 10px 10px,
+    rgba(46, 162, 240, 0.2) 15px 15px,
+    rgba(46, 162, 240, 0.1) 20px 20px,
+    rgba(46, 162, 240, 0.05) 25px 25px;
+  /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+  /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+  border: none;
+  /* box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+}
+
+#search-box:focus {
+  border: none;
+  outline: #fafafa;
 }
