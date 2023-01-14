@@ -71,3 +71,5 @@ function renderCountry(countries) {
     Notify.info('Too many matches found. Please enter a more specific name.');
   }
 }
+//ERROR - 404
+//clear list if input name if junk
