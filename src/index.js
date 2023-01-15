@@ -16,9 +16,31 @@ refs.searchBox.addEventListener(`input`, debounce(onSearch, DEBOUNCE_DELAY));
 function onSearch(event) {
   event.preventDefault();
   const boxValue = refs.searchBox.value.trim();
-
+  // fetchCountries(boxValue).then(data => console.log(data));
   fetchCountries(boxValue)
-    .then(renderCountry)
+    .then(
+      function getCountry(countries) {
+      if (countries.status === 404) {
+        refs.countryList.innerHTML = '';
+        refs.countryInfo.innerHTML = '';
+        Notify.failure('Oops, there is no country with that ');
+      }
+      if (countries.length >= 1 && countries.length < 10) {
+        const markup = countries.map(country => countryList(country));
+        refs.countryInfo.innerHTML = markup.join('');
+        refs.countryList.innerHTML = '';
+      }
+      if (countries.length === 1) {
+        const markup = countries.map(country => countryСard(country));
+        refs.countryInfo.innerHTML = markup.join('');
+        refs.countryList.innerHTML = '';
+      }
+      if (countries.length >= 10) {
+        Notify.info(
+          'Too many matches found. Please enter a more specific name.'
+        );
+      }
+    })
     .catch(err => {
       Notify.failure('Oops, there is no country with that name');
       refs.countryList.innerHTML = '';
@@ -51,25 +73,4 @@ function countryList({ flags, name }) {
       <h2 class="country-list__name">${name.official}</h2>
     </li>
     `;
-}
-
-function renderCountry(countries) {
-    if (countries.status === 404) {
-      refs.countryList.innerHTML = '';
-      refs.countryInfo.innerHTML = '';
-       Notify.failure('Oops, there is no country with that ');
-    }
-  if (countries.length >= 1 && countries.length < 10) {
-    const markup = countries.map(country => countryList(country));
-    refs.countryInfo.innerHTML = markup.join('');
-    refs.countryList.innerHTML = '';
-  }
-  if (countries.length === 1) {
-    const markup = countries.map(country => countryСard(country));
-    refs.countryInfo.innerHTML = markup.join('');
-    refs.countryList.innerHTML = '';
-  }
-  if (countries.length >= 10) {
-    Notify.info('Too many matches found. Please enter a more specific name.');
-  }
 }
