@@ -26,7 +26,7 @@ function onSearch(event) {
         Notify.failure('Oops, there is no country with that ');
       }
       if (countries.length >= 1 && countries.length < 10) {
-        const markup = countries.map(country => countryList(country));
+        const markup = countries.map(country => countriesList(country));
         refs.countryInfo.innerHTML = markup.join('');
         refs.countryList.innerHTML = '';
       }
@@ -66,7 +66,7 @@ function countryСard({ flags, name, capital, population, languages }) {
     `;
 }
 
-function countryList({ flags, name }) {
+function countriesList({ flags, name }) {
   return `
     <li class="country-list__item">
       <img class="country-list__flag" src="${flags.svg}" alt="${name.official}" width="25" />
