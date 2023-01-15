@@ -16,10 +16,10 @@ refs.searchBox.addEventListener(`input`, debounce(onSearch, DEBOUNCE_DELAY));
 function onSearch(event) {
   event.preventDefault();
   const boxValue = refs.searchBox.value.trim();
-  if (boxValue === '') {
-    refs.countryList.innerHTML = '';
-    refs.countryInfo.innerHTML = '';
-  }
+  // if (boxValue === '') {
+  //   refs.countryList.innerHTML = '';
+  //   refs.countryInfo.innerHTML = '';
+  // }
 
   fetchCountries(boxValue)
     .then(renderCountry)
