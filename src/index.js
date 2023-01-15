@@ -15,14 +15,13 @@ refs.searchBox.addEventListener(`input`, debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(event) {
   event.preventDefault();
-  const boxValue = refs.searchBox.value;
-  const searchBoxValue = boxValue.trim();
-  if (searchBoxValue === '') {
+  const boxValue = refs.searchBox.value.trim();
+  if (boxValue === '') {
     refs.countryList.innerHTML = '';
     refs.countryInfo.innerHTML = '';
   }
 
-  fetchCountries(searchBoxValue)
+  fetchCountries(boxValue)
     .then(renderCountry)
     .catch(err => {
       Notify.failure('Oops, there is no country with that name');
@@ -62,7 +61,7 @@ function renderCountry(countries) {
     if (countries.status === 404) {
       refs.countryList.innerHTML = '';
       refs.countryInfo.innerHTML = '';
-       Notify.failure('Oops, there is no country with that name');
+       Notify.failure('Oops, there is no country with that ');
     }
   if (countries.length >= 1 && countries.length < 10) {
     const markup = countries.map(country => countryList(country));
