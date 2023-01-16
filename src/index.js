@@ -16,15 +16,13 @@ refs.searchBox.addEventListener(`input`, debounce(onSearch, DEBOUNCE_DELAY));
 function onSearch(event) {
   event.preventDefault();
   const boxValue = refs.searchBox.value.trim();
-  // fetchCountries(boxValue).then(data => console.log(data));
+  if (boxValue === '') {
+    refs.countryList.innerHTML = '';
+    refs.countryInfo.innerHTML = '';
+  }  
+
   fetchCountries(boxValue)
-    .then(
-      function getCountry(countries) {
-      if (countries.status === 404) {
-        refs.countryList.innerHTML = '';
-        refs.countryInfo.innerHTML = '';
-        Notify.failure('Oops, there is no country with that ');
-      }
+    .then(function getCountry(countries) {
       if (countries.length >= 1 && countries.length < 10) {
         const markup = countries.map(country => countriesList(country));
         refs.countryInfo.innerHTML = markup.join('');
@@ -43,8 +41,6 @@ function onSearch(event) {
     })
     .catch(err => {
       Notify.failure('Oops, there is no country with that name');
-      refs.countryList.innerHTML = '';
-      refs.countryInfo.innerHTML = '';
     });
 }
 
