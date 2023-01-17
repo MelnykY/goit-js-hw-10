@@ -17,17 +17,23 @@ function onSearch(event) {
   event.preventDefault();
   const boxValue = refs.searchBox.value.trim();
   if (boxValue === '') {
- clearResult();
+    clearResult();
   }
-
-  fetchCountries(boxValue)
-    .then(getCountry)
-    .catch(err => {
-     
-    Notify.failure('Oops, there is no country with that name');
-     clearResult();
-    });
+  if (boxValue) {
+    fetchCountries(boxValue)
+      .then(getCountry)
+      .catch(err => {
+        Notify.failure('Oops, there is no country with that name');
+        clearResult();
+      });
+  }
 }
+
+function clearResult() {
+  refs.countryList.innerHTML = '';
+  refs.countryInfo.innerHTML = '';
+}
+
 
 function countryСard({ flags, name, capital, population, languages }) {
   return `
@@ -71,9 +77,4 @@ function getCountry(countries) {
     Notify.info('Too many matches found. Please enter a more specific name.');
     clearResult();
   }
-}
-
-function clearResult() {
-  (refs.countryList.innerHTML = '');
-  (refs.countryInfo.innerHTML = '');
 }
