@@ -17,7 +17,7 @@ function onSearch(event) {
   event.preventDefault();
   const boxValue = refs.searchBox.value.trim();
   if (boxValue === '') {
-    clearContent();
+ clearResult();
   }
 
   fetchCountries(boxValue)
